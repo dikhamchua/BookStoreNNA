@@ -1,4 +1,4 @@
-package com.bookhop.controller;
+package com.bookhop.controller.user;
 
 import com.bookhop.constant.Constant;
 import com.bookhop.dal.impl.BookDAO;

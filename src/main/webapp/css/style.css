@@ -66,6 +66,8 @@ NOTE: This file contains the styling for responsive Template.
 *::-moz-selection { background: var(--iq-primary); color: var(--iq-white); text-shadow: none; }
 ::-moz-selection { background: var(--iq-primary); color: var(--iq-white); text-shadow: none; }
 ::selection { background: var(--iq-primary); color: var(--iq-white); text-shadow: none; }
+.ml-300{ margin-left: 300px;}
+.width-300{width: calc(100% - 300px);}
 
 /* Definition Lists */
 dl dd { margin-bottom: 15px; }

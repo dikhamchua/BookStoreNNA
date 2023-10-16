@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:set var="pageSize" value="8" />
 <div id="content-page" class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -68,7 +69,10 @@
                     </div> 
                     <div class="iq-card-body">  
                         <div class="row">
-                            <c:forEach items="${listBook}" var="book">
+                            <c:forEach items="${listBook}"
+                                       var="book"
+                                       begin="${(pageControl.page - 1) * pageSize}"
+                                       end="${pageControl.page * pageSize - 1}">
                                 <div class="col-sm-6 col-md-4 col-lg-3">
                                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
                                         <div class="iq-card-body p-0">
@@ -115,14 +119,16 @@
                     <div class="pagination-container">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item disabled">
+                                <li class="page-item ${pageControl.page <= 1 ? 'disabled' : ''}">
                                     <a class="page-link" href="#" tabindex="-1">Previous</a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
+                                <c:forEach var="pageNumber" begin="1" end="${pageControl.totalPage}">
+                                    <li class="page-item ${pageNumber == pageControl.page ? 'active' : ''}">
+                                        <a class="page-link" href="?page=${pageNumber}">${pageNumber}</a>
+                                    </li>
+                                </c:forEach>
+                                <li class="page-item ${pageControl.page >= pageControl.totalPage ? 'disabled' : ''}" >
+                                    <a class="page-link" href="?page=${pageControl.page + 1}">Next</a>
                                 </li>
                             </ul>
                         </nav>

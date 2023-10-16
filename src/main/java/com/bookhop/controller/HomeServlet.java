@@ -1,7 +1,9 @@
 package com.bookhop.controller;
 
+import com.bookhop.constant.Constant;
 import com.bookhop.dal.impl.BookDAO;
 import com.bookhop.entity.Book;
+import com.bookhop.entity.PageControl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +29,13 @@ public class HomeServlet extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         //tạo session
         HttpSession session = request.getSession();
+        //tạo pageControl
+        PageControl pageControl = new PageControl();
         //get về listBook
-        List<Book> listBook = findBookDoGet(request);
+        List<Book> listBook = findBookDoGet(request, pageControl);
         //set list vào trong session
         session.setAttribute("listBook", listBook);
+        request.setAttribute("pageControl", pageControl);
         //chuyển sang trang homePage.jsp
         request.getRequestDispatcher("views/user/homePage.jsp").forward(request, response);
     }
@@ -46,7 +51,17 @@ public class HomeServlet extends HttpServlet {
      * @param request
      * @return danh sách các quyển sách
      */
-    private List<Book> findBookDoGet(HttpServletRequest request) {
+    private List<Book> findBookDoGet(HttpServletRequest request, PageControl pageControl) {
+        //get page
+        String pageRaw = request.getParameter("page");
+        //valid page
+        int page;
+        try {
+            page = Integer.parseInt(pageRaw);
+        } catch (Exception e) {
+            page = 1;
+        }
+        
         List<Book> listBook;
         //get về action:
         String action = request.getParameter("action") == null
@@ -66,6 +81,19 @@ public class HomeServlet extends HttpServlet {
                 listBook = bookDAO.findAll();
                 break;
         }
+        //total Record
+        int totalRecord = listBook.size();
+        //totalPage
+        int totalPage = (totalRecord % Constant.RECORD_PER_PAGE) == 0
+                ? (totalRecord / Constant.RECORD_PER_PAGE)
+                : (totalRecord / Constant.RECORD_PER_PAGE) + 1;
+        
+        //set page vào pageControl
+        pageControl.setPage(page);
+        //set totalRecord vào pageControl
+        pageControl.setTotalRecord(totalRecord);
+        //set total page
+        pageControl.setTotalPage(totalPage);
         return listBook;
     }
 

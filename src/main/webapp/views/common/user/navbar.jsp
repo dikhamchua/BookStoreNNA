@@ -25,9 +25,13 @@
                 <h5 class="mb-0">Trang Chủ</h5>
             </div>
             <div class="iq-search-bar">
-                <form action="#" class="searchbox">
-                    <input type="text" class="text search-input" placeholder="Tìm kiếm sản phẩm...">
-                    <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                <!--Search-->
+                <form action="home" class="searchbox">
+                    <input type="text" name="action" value="search" style="display: none" />
+                    <div class="input-group-append">
+                        <input type="text" class="text search-input" placeholder="Tìm kiếm sản phẩm..." name="keyword">
+                        <button class="btn btn-outline-dark" type="submit"><i class="ri-search-line"></i></button>
+                    </div>
                 </form>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"  aria-label="Toggle navigation">
@@ -39,8 +43,10 @@
                         <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
                             <i class="ri-search-line"></i>
                         </a>
-                        <form action="#" class="search-box p-0">
-                            <input type="text" class="text search-input" placeholder="Type here to search...">
+                        <!--Search-->
+                        <form action="home" class="search-box p-0">
+                            <input type="text" name="action" value="search" style="display: none" />
+                            <input type="text" class="text search-input" placeholder="Type here to search..." name="keyword">
                             <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                         </form>
                     </li>

@@ -77,10 +77,12 @@
                                             <div class="form-group">
                                                 <label>Hình ảnh:</label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" accept="image/png, image/jpeg">
+                                                    <input type="file" class="custom-file-input" accept="image/png, image/jpeg" onchange="displayImage(this)">
                                                     <label class="custom-file-label">Choose file</label>
                                                 </div>
+                                                <img id="previewImage" src="#" alt="Preview" style="display: none; max-width: 300px; max-height: 300px;">
                                             </div>
+
                                             <div class="form-group">
                                                 <label>Giá sách:</label>
                                                 <input type="text" class="form-control" id="bookPrice">
@@ -205,6 +207,25 @@
                 }
 
                 return !hasError;
+            }
+            
+            function displayImage(input) {
+                var previewImage = document.getElementById("previewImage");
+                var file = input.files[0];
+
+                if (file) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                        previewImage.style.display = "block";
+                    }
+
+                    reader.readAsDataURL(file);
+                } else {
+                    // Hide the preview image if no file is chosen
+                    previewImage.style.display = "none";
+                }
             }
 
         </script>

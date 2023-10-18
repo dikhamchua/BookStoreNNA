@@ -14,6 +14,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -28,7 +29,13 @@ public class BookAdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Book> list;
+        //set enconding UTF-8
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        //khai báo list, session, url
+        HttpSession session = request.getSession();
+        List<Book> listBooks = null;
         String url;
         //get action
         String action = request.getParameter("action") == null
@@ -40,19 +47,27 @@ public class BookAdminServlet extends HttpServlet {
                 url = "../views/admin/add-Book.jsp";
                 break;
             default:
-                list = bookDAO.findAll();
+                listBooks = bookDAO.findAll();
                 url = "../views/admin/admin-books.jsp";
                 break;
         }
+        //set attribute
+        session.setAttribute("listBook", listBooks);
         request.getRequestDispatcher(url).forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //set enconding UTF-8
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        //get về action
         String action = request.getParameter("action") == null
                 ? ""
                 : request.getParameter("action");
+        //dựa theo action
         switch (action) {
             case "add-book":
                 addBook(request);

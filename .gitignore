@@ -7,3 +7,10 @@
 /BookShop/target/
 /target/
 /src/main/java/com/bookhop/dal/DBContext.java
+target/BookShop-1.0-SNAPSHOT/css/
+target/BookShop-1.0-SNAPSHOT/images/
+target/maven-archiver/
+target/maven-status/
+target/*
+!target/BookShop-1.0-SNAPSHOT/imagesProduct/
+

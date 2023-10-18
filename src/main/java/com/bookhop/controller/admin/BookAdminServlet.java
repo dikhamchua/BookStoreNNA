@@ -19,7 +19,21 @@ public class BookAdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("../views/admin/admin-books.jsp").forward(request, response);
+        String url;
+        //get action
+        String action = request.getParameter("action") == null
+                ? ""
+                : request.getParameter("action");;
+        //dựa trên action chuyển trang
+        switch (action) {
+            case "add-book":
+                url = "../views/admin/add-Book.jsp";
+                break;
+            default:
+                url = "../views/admin/admin-books.jsp";
+                break;
+        }
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     @Override

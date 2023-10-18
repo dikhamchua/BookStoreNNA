@@ -9,7 +9,7 @@
                             <h4 class="card-title">Danh sách sách</h4>
                         </div>
                         <div class="iq-card-header-toolbar d-flex align-items-center">
-                            <a href="admin-add-book.html" class="btn btn-primary">Thêm sách</a>
+                            <a href="${pageContext.request.contextPath}/admin/book?action=add-book" class="btn btn-primary">Thêm sách</a>
                         </div>
                     </div>
                     <div class="iq-card-body">

@@ -52,32 +52,19 @@
                                         </div>
                                     </div>
                                     <div class="iq-card-body">
-                                        <form action="admin-books.html" onsubmit="return validateForm()">
+                                        <form action="${pageContext.request.contextPath}/admin/book?action=add-book"
+                                                onsubmit="return validateForm()"
+                                                enctype="multipart/form-data"
+                                                method="POST">
                                             <div class="form-group">
                                                 <label>Tên sách:</label>
-                                                <input type="text" class="form-control" id="bookName">
+                                                <input type="text" class="form-control" id="bookName" name="name">
                                                 <span id="bookNameError" style="color: red;"></span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Danh mục sách:</label>
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option selected="" disabled="">Danh mục sách</option>
-                                                    <option>General Books</option>
-                                                    <option>History Books</option>
-                                                    <option>Horror Story</option>
-                                                    <option>Arts Books</option>
-                                                    <option>Film & Photography</option>
-                                                    <option>Business & Economics</option>
-                                                    <option>Comics & Mangas</option>
-                                                    <option>Computers & Internet</option>
-                                                    <option> Sports</option>
-                                                    <option> Travel & Tourism</option>
-                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Hình ảnh:</label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" accept="image/png, image/jpeg" onchange="displayImage(this)">
+                                                    <input type="file" class="custom-file-input" accept="image/png, image/jpeg" onchange="displayImage(this)" name="image">
                                                     <label class="custom-file-label">Choose file</label>
                                                 </div>
                                                 <img id="previewImage" src="#" alt="Preview" style="display: none; max-width: 300px; max-height: 300px;">
@@ -85,17 +72,17 @@
 
                                             <div class="form-group">
                                                 <label>Giá sách:</label>
-                                                <input type="text" class="form-control" id="bookPrice">
+                                                <input type="text" class="form-control" id="bookPrice" name="price">
                                                 <span id="bookPriceError" style="color: red;"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label>Số lượng sách:</label>
-                                                <input type="text" class="form-control" id="bookQuantity">
+                                                <input type="text" class="form-control" id="bookQuantity" name="quantity">
                                                 <span id="bookQuantityError" style="color: red;"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label>Miêu tả:</label>
-                                                <textarea class="form-control" rows="4"></textarea>
+                                                <textarea class="form-control" rows="4" name="description"></textarea>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Gửi</button>
                                             <button type="reset" class="btn btn-danger">Trở lại</button>

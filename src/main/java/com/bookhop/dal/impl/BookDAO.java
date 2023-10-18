@@ -22,7 +22,7 @@ public class BookDAO extends GenericDAO<Book>{
 
     @Override
     public int insert(Book t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return insertGenericDAO(t);
     }
     
     /**

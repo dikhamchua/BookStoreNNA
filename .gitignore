@@ -6,4 +6,4 @@
 **/dist/
 /BookShop/target/
 /target/
-src/main/java/com/bookhop/dal/DBContext.java
+/src/main/java/com/bookhop/dal/DBContext.java

@@ -262,6 +262,7 @@ public abstract class GenericDAO<T> extends DBContext {
             return true;
         } catch (SQLException e) {
             try {
+                e.printStackTrace();
                 connection.rollback();
             } catch (SQLException ex) {
                 System.err.println("4USER: Bắn Exception ở hàm update: " + ex.getMessage());

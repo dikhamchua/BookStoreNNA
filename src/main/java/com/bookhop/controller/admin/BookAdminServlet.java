@@ -40,7 +40,7 @@ public class BookAdminServlet extends HttpServlet {
         //get action
         String action = request.getParameter("action") == null
                 ? ""
-                : request.getParameter("action");;
+                : request.getParameter("action");
         //dựa trên action chuyển trang
         switch (action) {
             case "add-book":
@@ -72,9 +72,12 @@ public class BookAdminServlet extends HttpServlet {
             case "add-book":
                 addBook(request);
                 break;
+            case "edit-book":
+                editBook(request);
+                break;
 
         }
-        request.getRequestDispatcher("../views/admin/admin-books.jsp").forward(request, response);
+        response.sendRedirect("book");
     }
 
     private void addBook(HttpServletRequest request) {
@@ -109,6 +112,48 @@ public class BookAdminServlet extends HttpServlet {
                 .build();
         //insert book vào DB
         bookDAO.insert(book);
+    }
+
+    private void editBook(HttpServletRequest request) {
+        //get information
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        int price = Integer.parseInt(request.getParameter("price"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        String description = request.getParameter("description");
+
+        String imagePath = null;
+        try {
+            Part part = request.getPart("image");
+            if (part.getSubmittedFileName() == null || part.getSubmittedFileName().trim().isEmpty()) {
+                imagePath = request.getParameter("imagePath");
+            }else {
+                //đường dẫn lưu ảnh
+                String path = request.getServletContext().getRealPath("/imagesProduct");
+                File dir = new File(path);
+                //ko có đường dẫn => tự tạo ra
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+
+                File image = new File(dir, part.getSubmittedFileName());
+                part.write(image.getAbsolutePath());
+                imagePath = "/BookShop/imagesProduct/" + image.getName();
+            }
+        } catch (IOException | ServletException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        Book book = Book.builder()
+                    .id(id)
+                    .name(name)
+                    .price(price)
+                    .quantity(quantity)
+                    .description(description)
+                    .image(imagePath)
+                    .build();
+        //update data
+        bookDAO.updateBook(book);
     }
 
 }

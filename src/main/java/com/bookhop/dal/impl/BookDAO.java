@@ -13,20 +13,21 @@ import java.util.List;
  *
  * @author ADMIN
  */
-public class BookDAO extends GenericDAO<Book>{
+public class BookDAO extends GenericDAO<Book> {
 
     @Override
     public List<Book> findAll() {
-       return queryGenericDAO(Book.class);
+        return queryGenericDAO(Book.class);
     }
 
     @Override
     public int insert(Book t) {
         return insertGenericDAO(t);
     }
-    
+
     /**
      * Tìm về các quyển sách dựa trên field và chứa value mong muốn
+     *
      * @param field: trường dữ liệu mong muốn tìm kiếm
      * @param value: giá trị của trường dữ liệu
      * @return danh sách các quyển sách
@@ -38,5 +39,23 @@ public class BookDAO extends GenericDAO<Book>{
         parameterMap.put("name", "%" + value + "%");
         return queryGenericDAO(Book.class, sql, parameterMap);
     }
-    
+
+    public void updateBook(Book book) {
+        String sql = "UPDATE [dbo].[Book]\n"
+                + "   SET [name] = ?\n"
+                + "      ,[image] = ?\n"
+                + "      ,[quantity] = ?\n"
+                + "      ,[price] = ?\n"
+                + "      ,[description] = ?\n"
+                + " WHERE id = ?";
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("name", book.getName());
+        parameterMap.put("image", book.getImage());
+        parameterMap.put("quantity", book.getQuantity());
+        parameterMap.put("price", book.getPrice());
+        parameterMap.put("description", book.getDescription());
+        parameterMap.put("id", book.getId());
+        updateGenericDAO(sql, parameterMap);
+    }
+
 }

@@ -21,7 +21,7 @@
                                         <th style="width: 3%;">STT</th>
                                         <th style="width: 12%;">Hình ảnh</th>
                                         <th style="width: 15%;">Tên sách</th>
-                                        <th style="width: 15%;">Tác giả sách</th>
+                                        <th style="width: 8%;">Số lượng sách</th>
                                         <th style="width: 33%;">Mô tả sách</th>
                                         <th style="width: 7%;">Giá</th>
                                         <th style="width: 22%;">Hoạt động</th>
@@ -33,23 +33,43 @@
                                             <!--No-->
                                             <td>${status.index + 1}</td>
                                             <!--Image-->
-                                            <td><img class="img-fluid rounded" src="${pageContext.request.contextPath}/images/browse-books/01.jpg" alt=""></td>
-                                            <!--Name-->
-                                            <td>${book.name}</td>
-                                            <!--Author-->
-                                            <td>Nguyễn Nhật Ánh</td>
-                                            <!--Description-->
                                             <td>
+                                                <input type="text" name="id" value="${book.id}" style="display: none"/>
+                                                <img class="img-fluid rounded" src="${book.image}" name="image">
+                                            </td>
+                                            <!--Name-->
+                                            <td name="name">${book.name}</td>
+                                            <!--Quantity-->
+                                            <td name="quantity">${book.quantity}</td>
+                                            <!--Description-->
+                                            <td name="description">
                                                 <p class="mb-0">
                                                     ${book.description}
                                                 </p>
                                             </td>
                                             <!--Price-->
-                                            <td>${book.price}VNĐ</td>
+                                            <td name="price">${book.price}VNĐ</td>
                                             <td>
                                                 <div class="flex align-items-center list-user-action">
-                                                    <a class="bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href="admin-add-book.html"><i class="ri-pencil-line"></i></a>
-                                                    <a class="bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xoá" href="#"><i class="ri-delete-bin-line"></i></a>
+                                                    <!--Edit-->
+                                                    <a class="bg-primary"
+                                                       data-toggle="modal"
+                                                       data-target="#editBookModal"
+                                                       data-placement="top"
+                                                       title=""
+                                                       data-original-title="Edit"
+                                                       onclick="editBookModal(this)">
+                                                        <i class="ri-pencil-line"></i>
+                                                    </a>
+                                                    <!--Delete-->
+                                                    <a class="bg-primary"
+                                                       data-toggle="tooltip"
+                                                       data-placement="top"
+                                                       title=""
+                                                       data-original-title="Xoá"
+                                                       href="#">
+                                                        <i class="ri-delete-bin-line"></i>
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>

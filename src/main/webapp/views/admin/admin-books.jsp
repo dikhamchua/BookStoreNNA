@@ -47,6 +47,9 @@
             <!-- Wrapper END -->
             <!-- Footer -->
         <jsp:include page="../common/admin/footer.jsp"></jsp:include>
+        
+        <!--Edit book modal-->
+        <jsp:include page="edit-book.jsp"></jsp:include>
 
             <!-- Footer END -->
             <!-- color-customizer -->

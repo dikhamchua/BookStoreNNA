@@ -19,8 +19,9 @@ import javax.servlet.http.HttpSession;
  * @author PHAM KHAC VINH
  */
 public class DashboardServlet extends HttpServlet {
+
     AccountDAO accountDAO = new AccountDAO();
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -60,7 +61,7 @@ public class DashboardServlet extends HttpServlet {
                 break;
             case "change-password":
                 changePassword(request);
-                url = "";
+                url = "views/user/profile-edit.jsp";
                 break;
             default:
                 url = "dashboard";
@@ -81,7 +82,7 @@ public class DashboardServlet extends HttpServlet {
         //update lai account vao session
         HttpSession session = request.getSession();
         Account accountNew = (Account) session.getAttribute(Constant.SESSION_ACCOUNT);
-        
+
         //tạo đối tượng account
         Account account = Account.builder()
                 .username(username)
@@ -98,7 +99,22 @@ public class DashboardServlet extends HttpServlet {
     }
 
     private void changePassword(HttpServletRequest request) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //lay ve account tu trong session
+        HttpSession session = request.getSession();
+        Account accountSession = (Account) session.getAttribute(Constant.SESSION_ACCOUNT);
+        //get về information
+        String username = ((Account) session.getAttribute("account")).getUsername();
+        String password = request.getParameter("password");
+        String newPassword = request.getParameter("newPassword");
+
+        //kiem tra xem password co = password o trong session
+        if (password.equals(accountSession.getPassword())) {
+            accountDAO.updatePassword(username, newPassword);
+            accountSession.setPassword(password);
+            session.setAttribute(Constant.SESSION_ACCOUNT, accountSession);
+        } else {
+            request.setAttribute("error", "Incorrect password");
+        }
     }
 
 }

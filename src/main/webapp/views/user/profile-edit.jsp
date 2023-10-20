@@ -88,48 +88,58 @@
                                                             <div class="form-group col-sm-6">
                                                                 <label for="username">Tên tài khoản:</label>
                                                                 <input type="text" class="form-control" id="username" value="${sessionScope.account.username}" name="username">
-                                                            </div>
-                                                            <div class="form-group col-sm-6">
-                                                                <label for="email">Email:</label>
-                                                                <input type="email" class="form-control" id="email" value="${sessionScope.account.email}" name="email">
-                                                            </div>
-                                                            <div class="form-group col-sm-12">
-                                                                <label>Địa chỉ:</label>
-                                                                <textarea class="form-control" name="address" rows="5" style="line-height: 22px;">${sessionScope.account.address}</textarea>
-                                                            </div>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary mr-2">Gửi</button>
-                                                        <button type="reset" class="btn iq-bg-danger">Hủy bỏ</button>
-                                                    </form>
-                                                </div>
+                                                        <div class="form-group col-sm-6">
+                                                            <label for="email">Email:</label>
+                                                            <input type="email" class="form-control" id="email" value="${sessionScope.account.email}" name="email">
+                                                        </div>
+                                                        <div class="form-group col-sm-12">
+                                                            <label>Địa chỉ:</label>
+                                                            <textarea class="form-control" name="address" rows="5" style="line-height: 22px;">${sessionScope.account.address}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary mr-2">Gửi</button>
+                                                    <button type="reset" class="btn iq-bg-danger">Hủy bỏ</button>
+                                                </form>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="chang-pwd" role="tabpanel">
-                                            <div class="iq-card">
-                                                <div class="iq-card-header d-flex justify-content-between">
-                                                    <div class="iq-header-title">
-                                                        <h4 class="card-title">Đổi mật khẩu</h4>
+                                    </div>
+                                    <div class="tab-pane fade" id="chang-pwd" role="tabpanel">
+                                        <div class="iq-card">
+                                            <div class="iq-card-header d-flex justify-content-between">
+                                                <div class="iq-header-title">
+                                                    <h4 class="card-title">Đổi mật khẩu</h4>
+                                                </div>
+                                            </div>
+                                            <div class="iq-card-body">
+                                                <form action="dashboard?page=profile-edit&action=change-password"
+                                                      method="POST"
+                                                      onsubmit="return validateForm(this);">
+                                                    <!--Current password-->
+                                                    <div class="form-group">
+                                                        <label for="cpass">Mật khẩu hiện tại:</label>
+                                                        <a href="#" class="float-right">Quên mật khẩu</a>
+                                                        <input type="Password" class="form-control" id="cpass" value="" name="password">
                                                     </div>
-                                                </div>
-                                                <div class="iq-card-body">
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <label for="cpass">Mật khẩu hiện tại:</label>
-                                                            <a href="javascripe:void();" class="float-right">Quên mật khẩu</a>
-                                                            <input type="Password" class="form-control" id="cpass" value="">
+                                                    <!--New Password-->
+                                                    <div class="form-group">
+                                                        <label for="newPassword">Mật khẩu mới:</label>
+                                                        <input type="Password" class="form-control" id="newPassword" value="" name="newPassword">
+                                                    </div>
+                                                    <!--Re-enter password-->
+                                                    <div class="form-group">
+                                                        <label for="newPassword2">Xác nhận lại mật khẩu:</label>
+                                                        <input type="Password" class="form-control" id="newPassword2" value="">
+                                                    </div>
+                                                    <!--Error-->
+                                                    <div class="form-group row">
+                                                        <div class="col-6">
+                                                            <div id="errorDiv" style="color: red;">${error}</div> <!-- Thông báo lỗi ở đây -->
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label for="npass">Mật khẩu mới:</label>
-                                                            <input type="Password" class="form-control" id="npass" value="">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="vpass">Xác nhận lại mật khẩu:</label>
-                                                            <input type="Password" class="form-control" id="vpass" value="">
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary mr-2">Gửi</button>
-                                                        <button type="reset" class="btn iq-bg-danger">Hủy bỏ</button>
-                                                    </form>
-                                                </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary mr-2">Gửi</button>
+                                                    <button type="reset" class="btn iq-bg-danger">Hủy bỏ</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -139,13 +149,44 @@
                     </div>
                 </div>
             </div>
-            <!-- Wrapper END -->
-            <!-- Footer -->
+        </div>
+        <!-- Wrapper END -->
+        <!-- Footer -->
         <jsp:include page="../common/user/dashboard/footer.jsp"></jsp:include>
             <!-- Footer END -->
             <!-- Optional JavaScript -->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-            <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+            
+        <script>
+            function validateForm(form) {
+                console.log(form);
+                const newPassword = form.newPassword.value;
+                const newPassword2 = form.newPassword2.value;
+                console.log(newPassword);
+                console.log(newPassword2);
+                var errorDiv = document.getElementById('errorDiv');
+                if (!errorDiv) {
+                    errorDiv = document.createElement('div');
+                    errorDiv.id = 'errorDiv';
+                    errorDiv.style.color = 'red';
+                    form.insertBefore(errorDiv, form.querySelector('button[name="submit"]'));
+                }
+
+                if (newPassword !== newPassword2) {
+                    errorDiv.textContent = 'Mật khẩu mới và mật khẩu nhập lại không trùng khớp!';
+                    console.log("khong trung nhau")
+                    return false; // This prevents the form from submitting
+                } else {
+                    errorDiv.textContent = ''; // Clears the error message
+                    console.log(" trung nhau")
+
+                    return true; // Allows the form to submit
+                }
+            }
+
+        </script>        
+            
+        <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/popper.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
         <!-- Appear JavaScript -->

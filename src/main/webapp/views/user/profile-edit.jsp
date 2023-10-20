@@ -72,7 +72,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="iq-card-body">
-                                                    <form>
+                                                    <form action="dashboard?page=profile-edit&action=profile-edit" method="POST">
                                                         <div class="form-group row align-items-center">
                                                             <div class="col-md-12">
                                                                 <div class="profile-img-edit">

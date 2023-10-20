@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author ADMIN
  */
-public class AccountDAO extends GenericDAO<Account>{
+public class AccountDAO extends GenericDAO<Account> {
 
     @Override
     public List<Account> findAll() {
@@ -48,5 +48,17 @@ public class AccountDAO extends GenericDAO<Account>{
                 parameterMap);
         return !list.isEmpty();
     }
-    
+
+    public void updateProfile(Account account) {
+        String sql = "UPDATE [dbo].[Account]\n"
+                + "   SET [email] = ?\n"
+                + "      ,[address] = ?\n"
+                + " WHERE username = ?";
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("email", account.getEmail());
+        parameterMap.put("address", account.getAddress());
+        parameterMap.put("username", account.getUsername());
+        updateGenericDAO(sql, parameterMap);
+    }
+
 }

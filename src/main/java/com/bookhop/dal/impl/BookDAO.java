@@ -58,4 +58,12 @@ public class BookDAO extends GenericDAO<Book> {
         updateGenericDAO(sql, parameterMap);
     }
 
+    public void deleteBook(int id) {
+        String sql = "DELETE FROM [dbo].[Book]\n"
+                + "      WHERE id = ?";
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("id", id);
+        deleteGenericDAO(sql, parameterMap);
+    }
+
 }

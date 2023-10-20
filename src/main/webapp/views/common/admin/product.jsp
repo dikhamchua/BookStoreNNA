@@ -63,11 +63,12 @@
                                                     </a>
                                                     <!--Delete-->
                                                     <a class="bg-primary"
-                                                       data-toggle="tooltip"
+                                                       data-toggle="modal"
+                                                       data-target="#delete-modal"
                                                        data-placement="top"
                                                        title=""
                                                        data-original-title="Xoá"
-                                                       href="#">
+                                                       onclick="deleteBookModal(this)">
                                                         <i class="ri-delete-bin-line"></i>
                                                     </a>
                                                 </div>

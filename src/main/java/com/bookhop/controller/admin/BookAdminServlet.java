@@ -75,6 +75,9 @@ public class BookAdminServlet extends HttpServlet {
             case "edit-book":
                 editBook(request);
                 break;
+            case "delete-book":
+                deleteBook(request);
+                break;
 
         }
         response.sendRedirect("book");
@@ -127,7 +130,7 @@ public class BookAdminServlet extends HttpServlet {
             Part part = request.getPart("image");
             if (part.getSubmittedFileName() == null || part.getSubmittedFileName().trim().isEmpty()) {
                 imagePath = request.getParameter("imagePath");
-            }else {
+            } else {
                 //đường dẫn lưu ảnh
                 String path = request.getServletContext().getRealPath("/imagesProduct");
                 File dir = new File(path);
@@ -143,17 +146,22 @@ public class BookAdminServlet extends HttpServlet {
         } catch (IOException | ServletException e) {
             System.out.println(e.getMessage());
         }
-        
+
         Book book = Book.builder()
-                    .id(id)
-                    .name(name)
-                    .price(price)
-                    .quantity(quantity)
-                    .description(description)
-                    .image(imagePath)
-                    .build();
+                .id(id)
+                .name(name)
+                .price(price)
+                .quantity(quantity)
+                .description(description)
+                .image(imagePath)
+                .build();
         //update data
         bookDAO.updateBook(book);
+    }
+
+    private void deleteBook(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        bookDAO.deleteBook(id);
     }
 
 }

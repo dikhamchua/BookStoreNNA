@@ -50,6 +50,8 @@
         
         <!--Edit book modal-->
         <jsp:include page="edit-book.jsp"></jsp:include>
+        <!--Delete book modal-->
+        <jsp:include page="delete-book-modal.jsp"></jsp:include>
 
             <!-- Footer END -->
             <!-- color-customizer -->

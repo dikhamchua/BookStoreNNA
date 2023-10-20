@@ -76,7 +76,6 @@
         const price = row.find('[name="price"]').text().replace('VNĐ', '').trim();
         const quantity = row.find('[name="quantity"]').text().trim();
         const id = row.find('input[name="id"]').val();
-        console.log(id);
         const imgSrc = row.find('img').attr('src');
 
         ; // If you need the book ID for something

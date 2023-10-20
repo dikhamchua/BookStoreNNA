@@ -34,7 +34,7 @@ public class AuthenServlet extends HttpServlet {
                 break;
             case "register":
                 //url = "register.jsp"
-                url = "views/user/home-page/register.jsp";
+                url = "views/authen/register.jsp";
                 break;
             case "logout":
                 logoutDoGet(request);
@@ -68,7 +68,8 @@ public class AuthenServlet extends HttpServlet {
     }
 
     private void logoutDoGet(HttpServletRequest request) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        HttpSession session = request.getSession();
+        session.removeAttribute(Constant.SESSION_ACCOUNT);
     }
 
     private void loginDoPost(HttpServletRequest request, HttpServletResponse response) {
@@ -108,7 +109,35 @@ public class AuthenServlet extends HttpServlet {
     }
 
     private void registerDoPost(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //tạo đối townjg session, accountDAO
+        accountDAO = new AccountDAO();
+        //get về các thông tin
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        //tạo đối tượng từ dữ liệu đã get về
+        Account account = Account.builder()
+                .username(username)
+                .password(password)
+                .roleId(Constant.ROLE_USER)
+                .build();
+
+        //kiểm tra xem username đã từng tồn tại trong DB chưa
+        try {
+            boolean isExist = accountDAO.findByUsername(username);
+            if (!isExist) {
+                //nếu chưa từng tồn tại thì mới insert dữ liệu vào DB
+                accountDAO.insert(account);
+                //chuyển về trang home
+                response.sendRedirect("home");
+            } else {
+                //chuyển về trang home
+                request.setAttribute("error", "Account exist, please choose other !!");
+                request.getRequestDispatcher("views/authen/register.jsp").forward(request, response);
+            }
+        } catch (IOException | ServletException e) {
+            System.err.println("Register do post bi loi: " + e.getMessage());
+        }
     }
 
 }

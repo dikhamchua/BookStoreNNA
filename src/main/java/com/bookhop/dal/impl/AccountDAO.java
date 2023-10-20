@@ -22,7 +22,7 @@ public class AccountDAO extends GenericDAO<Account>{
 
     @Override
     public int insert(Account t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return insertGenericDAO(t);
     }
 
     public Account findByUsernamePassword(Account account) {
@@ -37,6 +37,16 @@ public class AccountDAO extends GenericDAO<Account>{
         return list.isEmpty()
                 ? null
                 : list.get(0);
+    }
+
+    public boolean findByUsername(String username) {
+        String sql = "SELECT * FROM [Account]\n"
+                + "WHERE username = ?";
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("username", username);
+        List<Account> list = queryGenericDAO(Account.class, sql,
+                parameterMap);
+        return !list.isEmpty();
     }
     
 }

@@ -45,7 +45,7 @@
                             <a href="${pageContext.request.contextPath}/authen?action=login">Sign in</a>
                         </li>
                          <li class="nav-item">
-                            <a href="#">Register</a>
+                            <a href="${pageContext.request.contextPath}/authen?action=register">Register</a>
                         </li>
                     </c:if>
                     <c:if test="${sessionScope.account != null}">
@@ -291,7 +291,9 @@
                                             </div>
                                         </a>
                                         <div class="d-inline-block w-100 text-center p-3">
-                                            <a class="bg-primary iq-sign-btn" href="sign-in.html" role="button">Sign out<i class="ri-login-box-line ml-2"></i></a>
+                                            <a class="bg-primary iq-sign-btn" href="${pageContext.request.contextPath}/authen?action=logout" role="button">
+                                                Sign out<i class="ri-login-box-line ml-2"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

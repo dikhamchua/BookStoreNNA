@@ -27,7 +27,7 @@
                 <li><a href="admin-dashboard.html"><i class="las la-home iq-arrow-left"></i>Bảng Điều Khiển</a></li>
                 <li><a href="admin-category.html"><i class="ri-record-circle-line"></i>Danh Mục Sách</a></li>
                 <li><a href="admin-author.html"><i class="ri-record-circle-line"></i>Tác Giả</a></li>
-                <li><a href="admin-books.html"><i class="ri-record-circle-line"></i>Sách</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/book"><i class="ri-record-circle-line"></i>Sách</a></li>
                 <li><a href="sign-in.html"><i class="ri-record-circle-line"></i>Đăng Xuất</a></li>
             </ul>
         </nav>

@@ -8,6 +8,10 @@
         <servlet-name>BookAdminServlet</servlet-name>
         <servlet-class>com.bookhop.controller.admin.BookAdminServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AuthenServlet</servlet-name>
+        <servlet-class>com.bookhop.controller.authen.AuthenServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>BookAdminServlet</servlet-name>
         <url-pattern>/admin/book</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AuthenServlet</servlet-name>
+        <url-pattern>/authen</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

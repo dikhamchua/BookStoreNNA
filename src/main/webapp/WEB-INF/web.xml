@@ -20,6 +20,10 @@
         <servlet-name>ProductDetails</servlet-name>
         <servlet-class>com.bookhop.controller.user.ProductDetails</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckOutServlet</servlet-name>
+        <servlet-class>com.bookhop.controller.user.CheckOutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ProductDetails</servlet-name>
         <url-pattern>/product-details</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckOutServlet</servlet-name>
+        <url-pattern>/check-out</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -61,8 +61,11 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="iq-card-transparent iq-card-block iq-card-stretch iq-card-height">
-                                                <form action="cart?action=add-product" method="POST">
+                                                <form action="check-out?action=add-product" method="POST">
                                                     <div class="iq-card-body p-0">
+                                                        <div style="display:none">
+                                                            <input name="id" value="${book.id}">
+                                                        </div>
                                                         <!--Name-->
                                                         <h3 class="mb-3">${book.name}</h3>
                                                         <!--Price-->
@@ -179,35 +182,35 @@
         <script src="${pageContext.request.contextPath}/js/custom.js"></script>
 
         <script>
-                                                                function decreaseQuantity() {
-                                                                    const inputQuantity = document.getElementById('inputQuantity');
-                                                                    let quantity = parseInt(inputQuantity.value);
-                                                                    if (quantity > 1) {
-                                                                        quantity--;
-                                                                        inputQuantity.value = quantity;
-                                                                    }
-                                                                }
-                                                                function increaseQuantity() {
-                                                                    const inputQuantity = document.getElementById('inputQuantity');
-                                                                    let quantity = parseInt(inputQuantity.value);
-                                                                    quantity++;
-                                                                    inputQuantity.value = quantity;
-                                                                }
-                                                                const inputQuantity = document.getElementById('inputQuantity');
-                                                                inputQuantity.addEventListener('input', function (e) {
-                                                                    this.value = this.value.replace(/[^0-9]/g, '');
-                                                                });
-                                                                inputQuantity.addEventListener('mouseenter', function (e) {
-                                                                    if (this.value === '') {
-                                                                        this.value = this.dataset.originalValue;
-                                                                    }
-                                                                });
-                                                                inputQuantity.addEventListener('mouseleave', function (e) {
-                                                                    this.dataset.originalValue = this.value;
-                                                                    if (this.value === '') {
-                                                                        this.value = '1';
-                                                                    }
-                                                                });
+            function decreaseQuantity() {
+                const inputQuantity = document.getElementById('inputQuantity');
+                let quantity = parseInt(inputQuantity.value);
+                if (quantity > 1) {
+                    quantity--;
+                    inputQuantity.value = quantity;
+                }
+            }
+            function increaseQuantity() {
+                const inputQuantity = document.getElementById('inputQuantity');
+                let quantity = parseInt(inputQuantity.value);
+                quantity++;
+                inputQuantity.value = quantity;
+            }
+            const inputQuantity = document.getElementById('inputQuantity');
+            inputQuantity.addEventListener('input', function (e) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+            inputQuantity.addEventListener('mouseenter', function (e) {
+                if (this.value === '') {
+                    this.value = this.dataset.originalValue;
+                }
+            });
+            inputQuantity.addEventListener('mouseleave', function (e) {
+                this.dataset.originalValue = this.value;
+                if (this.value === '') {
+                    this.value = '1';
+                }
+            });
         </script>
     </body>
 </html>

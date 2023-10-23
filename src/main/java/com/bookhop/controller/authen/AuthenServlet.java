@@ -31,20 +31,23 @@ public class AuthenServlet extends HttpServlet {
             case "login":
                 //url = login.jsp
                 url = "views/authen/login.jsp";
+                request.getRequestDispatcher(url).forward(request, response);
                 break;
             case "register":
                 //url = "register.jsp"
                 url = "views/authen/register.jsp";
+                request.getRequestDispatcher(url).forward(request, response);
                 break;
             case "logout":
                 logoutDoGet(request);
                 url = "home";
+                response.sendRedirect(url);
                 break;
             default:
                 url = "home";
+                response.sendRedirect(url);
                 break;
         }
-        request.getRequestDispatcher(url).forward(request, response);
     }
 
     @Override

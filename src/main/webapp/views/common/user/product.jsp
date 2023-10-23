@@ -81,7 +81,7 @@
                                                     <!--Image-->
                                                     <a href="javascript:void();"><img class="img-fluid rounded w-100" src="${pageContext.request.contextPath}/images/browse-books/img01.jpg" alt=""></a>
                                                     <div class="view-book">
-                                                        <a href="book-page.html" class="btn btn-sm btn-white">Mua Ngay</a>
+                                                        <a href="${pageContext.request.contextPath}/product-details?id=${book.id}" class="btn btn-sm btn-white">Mua Ngay</a>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">

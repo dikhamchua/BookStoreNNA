@@ -22,9 +22,9 @@
                     </a>
                 </div>
             </div>
-            <div class="navbar-breadcrumb">
-                <h5 class="mb-0">Trang Chủ</h5>
-            </div>
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Trang chủ</a>
+            </nav>
             <div class="iq-search-bar">
                 <!--Search-->
                 <form action="home" class="searchbox">
@@ -44,7 +44,7 @@
                         <li class="nav-item">
                             <a href="${pageContext.request.contextPath}/authen?action=login">Sign in</a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a href="${pageContext.request.contextPath}/authen?action=register">Register</a>
                         </li>
                     </c:if>

@@ -16,6 +16,10 @@
         <servlet-name>DashboardServlet</servlet-name>
         <servlet-class>com.bookhop.controller.user.DashboardServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductDetails</servlet-name>
+        <servlet-class>com.bookhop.controller.user.ProductDetails</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>DashboardServlet</servlet-name>
         <url-pattern>/dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductDetails</servlet-name>
+        <url-pattern>/product-details</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -66,4 +66,14 @@ public class BookDAO extends GenericDAO<Book> {
         deleteGenericDAO(sql, parameterMap);
     }
 
+    public Book findById(int id) {
+        String sql = "select * from Book where id = ?";
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("id", id);
+        List<Book> list = queryGenericDAO(Book.class, sql, parameterMap);
+        return list.isEmpty()
+                ? null
+                : list.get(0);
+    }
+
 }

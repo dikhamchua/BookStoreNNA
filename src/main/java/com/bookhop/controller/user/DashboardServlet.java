@@ -29,6 +29,13 @@ public class DashboardServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
+        //update lai account vao session
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute(Constant.SESSION_ACCOUNT);
+        if (account.getRoleId() == Constant.ROLE_ADMIN) {
+            response.sendRedirect("admin/book");
+            return;
+        }
         String page = request.getParameter("page") == null ? "" : request.getParameter("page");
         String url;
         switch (page) {

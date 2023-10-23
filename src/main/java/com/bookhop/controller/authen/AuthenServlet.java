@@ -73,6 +73,7 @@ public class AuthenServlet extends HttpServlet {
     private void logoutDoGet(HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.removeAttribute(Constant.SESSION_ACCOUNT);
+        session.removeAttribute("cart");
     }
 
     private void loginDoPost(HttpServletRequest request, HttpServletResponse response) {

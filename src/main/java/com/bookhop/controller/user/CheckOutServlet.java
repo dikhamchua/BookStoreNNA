@@ -5,12 +5,15 @@
 
 package com.bookhop.controller.user;
 
+import com.bookhop.constant.Constant;
 import com.bookhop.dal.impl.BookDAO;
+import com.bookhop.dal.impl.OrderDAO;
+import com.bookhop.dal.impl.OrderDetailsDAO;
+import com.bookhop.entity.Account;
 import com.bookhop.entity.Book;
 import com.bookhop.entity.Order;
 import com.bookhop.entity.OrderDetails;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +49,11 @@ public class CheckOutServlet extends HttpServlet {
             case "delete":
                 deleteItem(request, response);
                 response.sendRedirect("check-out");
-                break;    
+                break;
+            case "purchase":
+                purchase(request, response);
+                response.sendRedirect("home");
+                break;
             default:
                 throw new AssertionError();
         }
@@ -141,4 +148,50 @@ public class CheckOutServlet extends HttpServlet {
         session.setAttribute("cart", cart);
     }
 
+    private void purchase(HttpServletRequest request, HttpServletResponse response) {
+        //lay ve session, orderDAO, OrderDETAILDAO
+        HttpSession session = request.getSession();
+        OrderDAO orderDAO = new OrderDAO();
+        OrderDetailsDAO orderDetailsDAO = new OrderDetailsDAO();
+        
+        //get ve note
+        String note = request.getParameter("note");
+        //get ve account tren session
+        Account account = (Account) session.getAttribute(Constant.SESSION_ACCOUNT);
+        //get cart tren session
+        Order cart = (Order) session.getAttribute("cart");
+        //get ve list Book tren session
+        List<Book> list = (List<Book>) session.getAttribute("listBook");
+        //calculate amount cua cart
+        int amount = caluclateAmount(cart, list);
+        //tao doi tuong order
+        cart.setAccountId(account.getId());
+        cart.setAmount(amount);
+        //luu doi tuong order vao trong DB => lay ve id cua order sau khi luu thanh cong
+        int orderId = orderDAO.insert(cart);
+        //luu tung cai order detail trong cart vao trong DB
+        for (OrderDetails orderDetails : cart.getListOrderDetails()) {
+            orderDetails.setOrderId(orderId);
+            orderDetailsDAO.insert(orderDetails);
+        }
+        
+        session.removeAttribute("cart");
+    }
+
+    private int caluclateAmount(Order cart, List<Book> list) {
+        int amount = 0;
+        for (OrderDetails od : cart.getListOrderDetails()) {
+            amount += (od.getQuantity() * findPriceById(list, od.getBookId()));
+        }
+        return amount;
+    }
+    
+    private int findPriceById(List<Book> list, int bookId) {
+        for (Book book : list) {
+            if (book.getId() == bookId) {
+                return book.getPrice();
+            }
+        }
+        return 0;
+    }
 }

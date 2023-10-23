@@ -130,7 +130,14 @@
                                                 <span class="text-dark"><strong>Tổng</strong></span>
                                                 <span class="text-dark total-price-element"><strong>300đ</strong></span>
                                             </div>
-                                            <a id="place-order" href="javascript:void();" class="btn btn-primary d-block mt-3 next">Đặt hàng</a>
+                                            <!--Purchase-->
+                                            <form class="form-customer" action="check-out?action=purchase" method="POST">
+                                                <a id="place-order"
+                                                   onclick="this.closest('form').submit()"
+                                                   class="btn btn-primary d-block mt-3 next">
+                                                    Đặt hàng
+                                                </a>
+                                            </form>
                                         </div>
                                     </div>
                                     <div class="iq-card ">

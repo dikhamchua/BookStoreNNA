@@ -113,6 +113,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            <c:if test="${cart.listOrderDetails.isEmpty() == false}">
                                 <div class="col-lg-4">
                                     <div class="iq-card">
                                         <div class="iq-card-body">
@@ -165,6 +166,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </c:if>
                             </div>
                         </div>
                     </div>

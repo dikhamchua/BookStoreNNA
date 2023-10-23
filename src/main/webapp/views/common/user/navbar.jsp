@@ -65,176 +65,18 @@
                                 <i class="ri-notification-2-line"></i>
                                 <span class="bg-primary dots"></span>
                             </a>
-                            <div class="iq-sub-dropdown">
-                                <div class="iq-card shadow-none m-0">
-                                    <div class="iq-card-body p-0">
-                                        <div class="bg-primary p-3">
-                                            <h5 class="mb-0 text-white">Thông Báo<small class="badge  badge-light float-right pt-1">4</small></h5>
-                                        </div>
-                                        <a href="#" class="iq-sub-card" >
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded" src="${pageContext.request.contextPath}/images/user/1.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
-                                                    <small class="float-right font-size-12">Just Now</small>
-                                                    <p class="mb-0">95.000đ</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card" >
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded" src="${pageContext.request.contextPath}/images/user/02.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
-                                                    <small class="float-right font-size-12">5 days ago</small>
-                                                    <p class="mb-0">255.000đ</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card" >
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded" src="${pageContext.request.contextPath}/images/user/03.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Đơn hàng giao thành công</h6>
-                                                    <small class="float-right font-size-12">2 days ago</small>
-                                                    <p class="mb-0">79.000đ</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card" >
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded" src="${pageContext.request.contextPath}/images/user/04.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Đơn hàng #7979 giao không thành công</h6>
-                                                    <small class="float-right font-size-12">3 days ago</small>
-                                                    <p class="mb-0">100.000đ</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
                         </li>
                         <li class="nav-item nav-icon dropdown">
                             <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
                                 <i class="ri-mail-line"></i>
                                 <span class="bg-primary dots"></span>
                             </a>
-                            <div class="iq-sub-dropdown">
-                                <div class="iq-card shadow-none m-0">
-                                    <div class="iq-card-body p-0 ">
-                                        <div class="bg-primary p-3">
-                                            <h5 class="mb-0 text-white">Tin Nhắn<small class="badge  badge-light float-right pt-1">5</small></h5>
-                                        </div>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded" src="${pageContext.request.contextPath}/images/user/01.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">QT Shop</h6>
-                                                    <small class="float-left font-size-12">13 Jun</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded" src="${pageContext.request.contextPath}/images/user/02.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Tran Thuan Store</h6>
-                                                    <small class="float-left font-size-12">20 Apr</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded" src="${pageContext.request.contextPath}/images/user/03.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Hoang Vu Book</h6>
-                                                    <small class="float-left font-size-12">30 Jun</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded" src="${pageContext.request.contextPath}/images/user/04.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Quang Minh Book</h6>
-                                                    <small class="float-left font-size-12">12 Sep</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="avatar-40 rounded" src="${pageContext.request.contextPath}/images/user/05.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">TV Team</h6>
-                                                    <small class="float-left font-size-12">5 Dec</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
                         </li>
                         <li class="nav-item nav-icon dropdown">
-                            <a href="#" class="search-toggle iq-waves-effect text-gray rounded">
+                            <a href="${pageContext.request.contextPath}/check-out" class="search-toggle iq-waves-effect text-gray rounded">
                                 <i class="ri-shopping-cart-2-line"></i>
                                 <span class="badge badge-danger count-cart rounded-circle">2</span>
                             </a>
-                            <div class="iq-sub-dropdown">
-                                <div class="iq-card shadow-none m-0">
-                                    <div class="iq-card-body p-0 toggle-cart-info">
-                                        <div class="bg-primary p-3">
-                                            <h5 class="mb-0 text-white">Giỏ Hàng<small class="badge  badge-light float-right pt-1">2</small></h5>
-                                        </div>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="rounded" src="${pageContext.request.contextPath}/images/cart/01.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Night People book</h6>
-                                                    <p class="mb-0">$32</p>
-                                                </div>
-                                                <div class="float-right font-size-24 text-danger"><i class="ri-close-fill"></i></div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card">
-                                            <div class="media align-items-center">
-                                                <div class="">
-                                                    <img class="rounded" src="${pageContext.request.contextPath}/images/cart/02.jpg" alt="">
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">The Sin Eater Book</h6>
-                                                    <p class="mb-0">$40</p>
-                                                </div>
-                                                <div class="float-right font-size-24 text-danger"><i class="ri-close-fill"></i></div>
-                                            </div>
-                                        </a>
-                                        <div class="d-flex align-items-center text-center p-3">
-                                            <a class="btn btn-primary mr-2 iq-sign-btn" href="checkout.html" role="button">Giỏ Hàng</a>
-                                            <a class="btn btn-primary iq-sign-btn" href="checkout.html" role="button">Thanh Toán</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </li>
                         <li class="line-height pt-3">
                             <a href="${pageContext.request.contextPath}/dashboard?action=profile-edit" class="search-toggle iq-waves-effect d-flex align-items-center">
@@ -260,7 +102,7 @@
                                                 </div>
                                             </div>
                                         </a>
-                                        <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+                                        <a href="#" class="iq-sub-card iq-bg-primary-hover">
                                             <div class="media align-items-center">
                                                 <div class="rounded iq-card-icon iq-bg-primary">
                                                     <i class="ri-profile-line"></i>
@@ -277,16 +119,6 @@
                                                 </div>
                                                 <div class="media-body ml-3">
                                                     <h6 class="mb-0 ">Đơn hàng của tôi</h6>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="iq-sub-card iq-bg-primary-hover">
-                                            <div class="media align-items-center">
-                                                <div class="rounded iq-card-icon iq-bg-primary">
-                                                    <i class="ri-heart-line"></i>
-                                                </div>
-                                                <div class="media-body ml-3">
-                                                    <h6 class="mb-0 ">Yêu Thích</h6>
                                                 </div>
                                             </div>
                                         </a>

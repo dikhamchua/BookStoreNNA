@@ -13,7 +13,8 @@ import java.util.List;
  *
  * @author ADMIN
  */
-public class OrderDAO extends GenericDAO<Order>{
+public class OrderDAO extends GenericDAO<Order> {
+
     @Override
     public List<Order> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -30,5 +31,13 @@ public class OrderDAO extends GenericDAO<Order>{
         parameterMap.put("amount", t.getAmount());
         parameterMap.put("accountId", t.getAccountId());
         return insertGenericDAO(sql, parameterMap);
+    }
+
+    public List<Order> findsByAccountId(int id) {
+        String sql = "select * from [Order]\n"
+                + "where accountId = ?";
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("accountId", id);
+        return queryGenericDAO(Order.class, sql, parameterMap);
     }
 }

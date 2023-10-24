@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="iq-sidebar">
     <div class="iq-sidebar-logo d-flex justify-content-between">
-        <a href="admin-dashboard.html" class="header-logo">
+        <a href="${pageContext.request.contextPath}/home" class="header-logo">
             <img src="${pageContext.request.contextPath}/images/logo.png" class="img-fluid rounded-normal" alt="">
             <div class="logo-title">
                 <span class="text-primary text-uppercase">NHASACHTV</span>

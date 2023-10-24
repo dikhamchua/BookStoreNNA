@@ -79,7 +79,7 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="col-6 p-0 position-relative image-overlap-shadow">
                                                     <!--Image-->
-                                                    <a href="javascript:void();"><img class="img-fluid rounded w-100" src="${pageContext.request.contextPath}/images/browse-books/img01.jpg" alt=""></a>
+                                                    <a href="javascript:void();"><img class="img-fluid rounded w-100" src="${book.image}" alt=""></a>
                                                     <div class="view-book">
                                                         <a href="${pageContext.request.contextPath}/product-details?id=${book.id}" class="btn btn-sm btn-white">Mua Ngay</a>
                                                     </div>

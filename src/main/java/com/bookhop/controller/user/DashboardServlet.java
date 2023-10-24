@@ -6,8 +6,11 @@ package com.bookhop.controller.user;
 
 import com.bookhop.constant.Constant;
 import com.bookhop.dal.impl.AccountDAO;
+import com.bookhop.dal.impl.OrderDAO;
 import com.bookhop.entity.Account;
+import com.bookhop.entity.Order;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +32,7 @@ public class DashboardServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-        //update lai account vao session
+        //up    date lai account vao session
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute(Constant.SESSION_ACCOUNT);
         if (account.getRoleId() == Constant.ROLE_ADMIN) {
@@ -43,7 +46,8 @@ public class DashboardServlet extends HttpServlet {
                 url = "views/user/profile-edit.jsp";
                 break;
             case "purchase":
-                url = "";
+                setListPurchase(request, account);
+                url = "views/user/purchase.jsp";
                 break;
             default:
                 url = "views/user/profile-edit.jsp";
@@ -122,6 +126,13 @@ public class DashboardServlet extends HttpServlet {
         } else {
             request.setAttribute("error", "Incorrect password");
         }
+    }
+
+    private void setListPurchase(HttpServletRequest request, Account account) {
+        OrderDAO orderDAO = new OrderDAO();
+        List<Order> listOrder = orderDAO.findsByAccountId(account.getId());
+        HttpSession session = request.getSession();
+        session.setAttribute("listOrder", listOrder);
     }
 
 }

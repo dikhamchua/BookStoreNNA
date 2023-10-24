@@ -13,6 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import java.sql.Timestamp;
 
 @ToString
 @Builder
@@ -25,5 +26,6 @@ public class Order {
     private int id;
     private int amount;
     private int accountId;
+    private Timestamp createAt;
     List<OrderDetails> listOrderDetails = new ArrayList<>();
 }
